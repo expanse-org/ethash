@@ -1,5 +1,5 @@
-/* ethash: C/C++ implementation of Ethash, the Ethereum Proof of Work algorithm.
- * Copyright 2018-2019 Pawel Bylica.
+/* frkhash: C/C++ implementation of Frankohash, the Expanse Proof of Work algorithm.
+ * Copyright 2021-Present Christopher Franko.
  * Licensed under the Apache License, Version 2.0.
  */
 
@@ -21,7 +21,7 @@ static int is_odd_prime(int number)
     return 1;
 }
 
-int ethash_find_largest_prime(int upper_bound)
+int frkhash_find_largest_prime(int upper_bound)
 {
     int n = upper_bound;
 

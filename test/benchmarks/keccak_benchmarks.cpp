@@ -1,10 +1,10 @@
-// Ethash: C/C++ implementation of Ethash, the Ethereum Proof of Work algorithm.
+// Frkhash: C/C++ implementation of Frkhash, the Expanse Proof of Work algorithm.
 // Copyright 2018 Pawel Bylica.
 // SPDX-License-Identifier: Apache-2.0
 
 #include "keccak_utils.hpp"
 #include <benchmark/benchmark.h>
-#include <ethash/keccak.h>
+#include <frkhash/keccak.h>
 
 
 void fake_keccakf1600(uint64_t* state) noexcept
@@ -19,7 +19,7 @@ static void keccakf800(benchmark::State& state)
 
     for (auto _ : state)
     {
-        ethash_keccakf800(keccak_state);
+        frkhash_keccakf800(keccak_state);
         benchmark::DoNotOptimize(keccak_state);
     }
 }
@@ -33,7 +33,7 @@ static void keccak256(benchmark::State& state)
 
     for (auto _ : state)
     {
-        auto h = ethash_keccak256(data.data(), data.size());
+        auto h = frkhash_keccak256(data.data(), data.size());
         benchmark::DoNotOptimize(h.bytes);
     }
 }
@@ -47,7 +47,7 @@ static void keccak512(benchmark::State& state)
 
     for (auto _ : state)
     {
-        auto h = ethash_keccak512(data.data(), data.size());
+        auto h = frkhash_keccak512(data.data(), data.size());
         benchmark::DoNotOptimize(h.bytes);
     }
 }

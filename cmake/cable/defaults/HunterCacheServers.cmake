@@ -11,7 +11,7 @@ set(HUNTER_CACHE_SERVERS
     CACHE STRING "Hunter cache servers")
 
 # Default path to Hunter passwords file containing information how to access
-# Ethereum's cache server.
+# Expanse's cache server.
 set(HUNTER_PASSWORDS_PATH
     ${CMAKE_CURRENT_LIST_DIR}/HunterCacheServers-passwords.cmake
     CACHE STRING "Hunter passwords file")

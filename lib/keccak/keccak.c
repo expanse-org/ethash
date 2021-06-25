@@ -1,9 +1,9 @@
-// ethash: C/C++ implementation of Ethash, the Ethereum Proof of Work algorithm.
+// frkhash: C/C++ implementation of Frkhash, the Expanse Proof of Work algorithm.
 // Copyright 2018 Pawel Bylica.
 // SPDX-License-Identifier: Apache-2.0
 
 #include "../support/attributes.h"
-#include <ethash/keccak.h>
+#include <frkhash/keccak.h>
 
 #if defined(_MSC_VER)
 #include <string.h>
@@ -353,30 +353,30 @@ static inline ALWAYS_INLINE void keccak(
         out[i] = to_le64(state[i]);
 }
 
-union ethash_hash256 ethash_keccak256(const uint8_t* data, size_t size)
+union frkhash_hash256 frkhash_keccak256(const uint8_t* data, size_t size)
 {
-    union ethash_hash256 hash;
+    union frkhash_hash256 hash;
     keccak(hash.word64s, 256, data, size);
     return hash;
 }
 
-union ethash_hash256 ethash_keccak256_32(const uint8_t data[32])
+union frkhash_hash256 frkhash_keccak256_32(const uint8_t data[32])
 {
-    union ethash_hash256 hash;
+    union frkhash_hash256 hash;
     keccak(hash.word64s, 256, data, 32);
     return hash;
 }
 
-union ethash_hash512 ethash_keccak512(const uint8_t* data, size_t size)
+union frkhash_hash512 frkhash_keccak512(const uint8_t* data, size_t size)
 {
-    union ethash_hash512 hash;
+    union frkhash_hash512 hash;
     keccak(hash.word64s, 512, data, size);
     return hash;
 }
 
-union ethash_hash512 ethash_keccak512_64(const uint8_t data[64])
+union frkhash_hash512 frkhash_keccak512_64(const uint8_t data[64])
 {
-    union ethash_hash512 hash;
+    union frkhash_hash512 hash;
     keccak(hash.word64s, 512, data, 64);
     return hash;
 }

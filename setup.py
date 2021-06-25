@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# ethash: C/C++ implementation of Ethash, the Ethereum Proof of Work algorithm.
+# frkhash: C/C++ implementation of Frkhash, the Expanse Proof of Work algorithm.
 # Copyright 2019 Pawel Bylica.
 # Licensed under the Apache License, Version 2.0.
 
@@ -35,15 +35,15 @@ class build_ext(setuptools_build_ext):
             '-DCMAKE_INSTALL_LIBDIR=lib',
             '-DCMAKE_POSITION_INDEPENDENT_CODE=TRUE',
             '-DHUNTER_ENABLED=OFF',
-            '-DETHASH_BUILD_TESTS=OFF',
-            '-DETHASH_INSTALL_CMAKE_CONFIG=OFF'
+            '-DFRKHASH_BUILD_TESTS=OFF',
+            '-DFRKHASH_INSTALL_CMAKE_CONFIG=OFF'
         ]
 
         generator = os.environ.get('GENERATOR')
         if generator:
             cmake_opts.append('-G{}'.format(generator))
 
-        if not self.skip_cmake_build and not os.environ.get('ETHASH_PYTHON_SKIP_BUILD'):
+        if not self.skip_cmake_build and not os.environ.get('FRKHASH_PYTHON_SKIP_BUILD'):
             cmake_cmd = shutil.which('cmake')
             if not cmake_cmd:
                 raise CCompilerError(
@@ -67,24 +67,24 @@ class build_ext(setuptools_build_ext):
 
 
 setup(
-    name='ethash',
-    version='0.7.0',
+    name='frkhash',
+    version='0.1.0',
     description=
-    "C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm",
-    url='https://github.com/chfast/ethash',
+    "C/C++ implementation of Frkhash – the Expanse Proof of Work algorithm",
+    url='https://github.com/chfast/frkhash',
     author='Paweł Bylica',
     author_email='pawel@ethereum.org',
     license='Apache License, Version 2.0',
 
     package_dir={'': 'bindings/python'},
-    packages=['ethash'],
-    cffi_modules=['bindings/python/ethash/_build.py:ffibuilder'],
+    packages=['frkhash'],
+    cffi_modules=['bindings/python/frkhash/_build.py:ffibuilder'],
 
     python_requires='>=3.5',
     setup_requires=['cffi>=1.12'],
     install_requires=['cffi>=1.12'],
 
-    test_suite='tests.test_ethash',
+    test_suite='tests.test_frkhash',
 
     cmdclass={'build_ext': build_ext},
 

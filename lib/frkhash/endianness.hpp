@@ -1,17 +1,17 @@
-// ethash: C/C++ implementation of Ethash, the Ethereum Proof of Work algorithm.
-// Copyright 2018-2019 Pawel Bylica.
+// frkhash: C/C++ implementation of Frankohash, the Expanse Proof of Work algorithm.
+// Copyright 2021-Present Christopher Franko.
 // Licensed under the Apache License, Version 2.0.
 
 /// @file
 /// This file contains helper functions to handle big-endian architectures.
-/// The Ethash algorithm is naturally defined for little-endian architectures
+/// The Frankohash algorithm is naturally defined for little-endian architectures
 /// so for those the helpers are just no-op empty functions.
 /// For big-endian architectures we need 32-bit and 64-bit byte swapping in
 /// some places.
 
 #pragma once
 
-#include <ethash/ethash.hpp>
+#include <frkhash/frkhash.hpp>
 
 #if _WIN32
 
@@ -41,7 +41,7 @@
 
 #endif
 
-namespace ethash
+namespace frkhash
 {
 #if __BYTE_ORDER == __LITTLE_ENDIAN
 
@@ -96,4 +96,4 @@ struct be
 };
 
 #endif
-}  // namespace ethash
+}  // namespace frkhash

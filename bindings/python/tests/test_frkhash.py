@@ -1,14 +1,13 @@
-# ethash: C/C++ implementation of Ethash, the Ethereum Proof of Work algorithm.
+# frkhash: C/C++ implementation of Frkhash, the Expanse Proof of Work algorithm.
 # Copyright 2019 Pawel Bylica.
 # Licensed under the Apache License, Version 2.0.
 
 import unittest
 
-import ethash
+import frkhash
 
 
-class TestEthash(unittest.TestCase):
-    epoch_number = 0
+class TestFrkhash(unittest.TestCase):
     nonce = 0x4242424242424242
     header_hash = bytes.fromhex(
         '2a8de2adf89af77358250bf908bf04ba94a6e8c3ba87775564a41d269a05e4ce')
@@ -25,16 +24,16 @@ class TestEthash(unittest.TestCase):
                 'c00fa9caf9d87976ba469bcbe06713b4'
                 '35f091ef2769fb160cdab33d3670680e')
 
-        self.assertEqual(ethash.keccak_256(b'').hex(), h256)
-        self.assertEqual(ethash.keccak_512(b'').hex(), h512)
+        self.assertEqual(frkhash.keccak_256(b'').hex(), h256)
+        self.assertEqual(frkhash.keccak_512(b'').hex(), h512)
 
     def test_hash(self):
-        f, m = ethash.hash(0, self.header_hash, self.nonce)
+        f, m = frkhash.hash(0, self.header_hash, self.nonce)
         self.assertEqual(m, self.mix_hash)
         self.assertEqual(f, self.final_hash)
 
     def test_verify(self):
-        t = ethash.verify(0, self.header_hash, self.mix_hash, self.nonce,
+        t = frkhash.verify(0, self.header_hash, self.mix_hash, self.nonce,
                           self.final_hash)
         self.assertTrue(t)
         self.assertEqual(type(t), bool)

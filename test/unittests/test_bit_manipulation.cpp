@@ -1,8 +1,8 @@
-// ethash: C/C++ implementation of Ethash, the Ethereum Proof of Work algorithm.
+// frkhash: C/C++ implementation of Frkhash, the Expanse Proof of Work algorithm.
 // Copyright 2018-2019 Pawel Bylica.
 // Licensed under the Apache License, Version 2.0.
 
-#include <ethash/bit_manipulation.h>
+#include <frkhash/bit_manipulation.h>
 
 #include <gtest/gtest.h>
 

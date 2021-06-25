@@ -3,10 +3,10 @@
 
 cmake_minimum_required(VERSION 3.5)
 
-project(ethash-cmake-config-test)
+project(frkhash-cmake-config-test)
 
-find_package(ethash CONFIG REQUIRED)
+find_package(frkhash CONFIG REQUIRED)
 
-add_executable(ethash-cmake-config-test cmake_config_test.cpp)
-target_link_libraries(ethash-cmake-config-test ethash::ethash)
-set_target_properties(ethash-cmake-config-test PROPERTIES CXX_STANDARD 11 CXX_EXTENSIONS OFF)
+add_executable(frkhash-cmake-config-test cmake_config_test.cpp)
+target_link_libraries(frkhash-cmake-config-test frkhash::frkhash)
+set_target_properties(frkhash-cmake-config-test PROPERTIES CXX_STANDARD 11 CXX_EXTENSIONS OFF)
