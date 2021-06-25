@@ -120,7 +120,7 @@ int main(int argc, const char* argv[])
     int all_hashes = 0;
     auto start_time = timer::now();
     auto time = start_time;
-    static constexpr int khps_mbps_ratio = 1000000;
+    static constexpr int khps_mbps_ratio = 1; 
 
     double current_duration = 0;
     double all_duration = 0;
