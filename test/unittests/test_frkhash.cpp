@@ -126,54 +126,6 @@ TEST(frkhash, verify_boundary)
     EXPECT_FALSE(verify(example_header_hash, r.mix_hash, nonce, boundary_lt));
 }
 
-
-#if !__APPLE__
-
-// The Out-Of-Memory tests try to allocate huge memory buffers. This fails on
-// Linux and Windows, but not on macOS. Because the macOS tries too hard
-// the tests go forever.
-// The tests are disabled on macOS at compile time (instead of using GTest
-// filter) because we don't want developers using macOS to be hit by this
-// behavior.
-
-#if __linux__
-#include <sys/resource.h>
-
-namespace
-{
-rlimit orig_limit;
-
-bool set_memory_limit(size_t size)
-{
-    getrlimit(RLIMIT_AS, &orig_limit);
-    rlimit limit = orig_limit;
-    limit.rlim_cur = size;
-    return setrlimit(RLIMIT_AS, &limit) == 0;
-}
-
-bool restore_memory_limit()
-{
-    return setrlimit(RLIMIT_AS, &orig_limit) == 0;
-}
-}  // namespace
-
-#else
-
-namespace
-{
-bool set_memory_limit(size_t)
-{
-    return true;
-}
-
-bool restore_memory_limit()
-{
-    return true;
-}
-}  // namespace
-
-#endif
-
 static constexpr bool arch64bit = sizeof(void*) == 8;
 
 #endif
