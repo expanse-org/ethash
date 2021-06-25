@@ -126,10 +126,6 @@ TEST(frkhash, verify_boundary)
     EXPECT_FALSE(verify(example_header_hash, r.mix_hash, nonce, boundary_lt));
 }
 
-static constexpr bool arch64bit = sizeof(void*) == 8;
-
-#endif
-
 namespace
 {
 struct is_less_or_equal_test_case
